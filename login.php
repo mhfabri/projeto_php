@@ -1,5 +1,56 @@
 <?php
-
-
-
+include 'conexao.php';
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+ $email = $_POST['email'];
+ $senha = $_POST['senha'];
+}
 ?>
+
+    <?php
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $email = $_POST['email'];
+            $senha = $_POST['senha'];
+            $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha ='$senha'";
+            $resultado = mysqli_query($conexao, $sql);
+            if (mysqli_num_rows($resultado) == 1) {
+                $mensagem = "Login realizado com sucesso!";
+            } else {
+                $mensagem = "E-mail ou senha inválidos.";
+            }
+        }
+    ?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <?php include 'cabecalho.php'; ?>
+    <main>
+        <h2>Login</h2>
+
+        <?php if (isset($mensagem)) { ?>
+        <p><?php echo $mensagem; ?></p>
+        <?php } ?>
+
+
+        <form action="login.php" method="POST">
+            <label>E-mail:</label>
+            <input type="text" name="email"><br>
+            <label>Senha:</label>
+            <input type="password" name="senha"><br>
+            <button type="submit">Entrar</button>
+        </form>
+    </main>
+    <?php include 'rodape.php'; ?>
+
+
+
+
+</body>
+</html>

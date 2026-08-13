@@ -8,9 +8,9 @@
 
     $conexao = mysqli_connect($host, $usuario, $senha, $banco);
 
-    if ($conexao){
-        echo ("conectado");
-    }else{
-        echo ("ao conectar: ". mysqli_connect_error());
-    }
+    // if ($conexao){
+    //     echo ("conectado");
+    // }else{
+    //     echo ("ao conectar: ". mysqli_connect_error());
+    // }
 ?>
