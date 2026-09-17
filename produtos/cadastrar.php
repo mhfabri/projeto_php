@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <main>
 
-    <h2>Cadastrar Prouto</h2>
+    <h2>Cadastrar Produto</h2>
 
     <?php if (isset($mensagem)) { ?>
         <p><?php echo $mensagem; ?></p>
